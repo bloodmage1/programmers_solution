@@ -7,25 +7,46 @@ course2 = [2,3,5]
 orders3 = ["XYZ", "XWY", "WXA"]
 course3 = [2,3,4]
 
-dic = {}
-str_orders = []
-for i in orders1:
-    for j in i:
-        str_orders.append(j)
-        dic[j]=0    
-    globals()["count_{}".format(j)] = 0
+
+from collections import Counter
+from itertools import combinations
+from math import comb
 
 
-print(str_orders)
+answer = []
 
-for i in str_orders:
-    if i in dic:
-        dic[i] += 1
-    else:
-        dic[i] = 1
+for num in course1:
+    array = []
+    for order in orders1:
+        order = sorted(order)
+       
+        array.extend(list(combinations(order, num)))
+    count = Counter(array)
+    
+    if count:
+        print(max(count.values()))
+        if max(count.values()) >= 2:
+            for k, v in count.items():
+                if v == max(count.values()):
+                    answer.append("".join(k))
 
-for i in course1:
-    for k,v in dic.items():
-        if v == i:
-            print(i,":",k)
+print(answer)
 
+# str_answer = ""
+
+# for i in orders1:
+#     str_answer += i
+    
+# a = Counter(str_answer)
+
+# result = []
+
+# for i in course1:
+#     result1 = ""
+#     for k,v in a.items():
+#         if v >= i:
+#             result1 += k
+    
+#     result.append(result1)
+
+# print(result)
