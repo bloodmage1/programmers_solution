@@ -15,22 +15,21 @@ from math import comb
 
 answer = []
 
-for num in course1:
+for i in course1:
     array = []
-    for order in orders1:
-        order = sorted(order)
-       
-        array.extend(list(combinations(order, num)))
-    count = Counter(array)
+    for j in orders1:
+        order = sorted(j)
+        array.extend(list(combinations(order,i)))
+        
+    ton = Counter(array)
     
-    if count:
-        print(max(count.values()))
-        if max(count.values()) >= 2:
-            for k, v in count.items():
-                if v == max(count.values()):
-                    answer.append("".join(k))
+    if max(count.)
 
-print(answer)
+    # for key, value in ton.items():
+    #     if value >= 2:
+            
+
+print(ton)
 
 # str_answer = ""
 
